@@ -1,0 +1,15 @@
+.todo-wrap {
+  display: inline-block;
+  width: 375px;
+  border: 1px solid #563d7c;
+  margin: auto;
+  background: #fff;
+  vertical-align: middle;
+  > h1 {
+    padding: 20px;
+    background: #563d7c;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+  }
+}

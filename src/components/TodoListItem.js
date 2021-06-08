@@ -1,20 +1,27 @@
-import React from 'react';
+import { React, useCallback } from 'react';
 import { 
   MdCheckBoxOutlineBlank,
   MdCheckBox,
 } from 'react-icons/md';
 import './TodoListItem.scss';
 
-const TodoListItem = ({ todo }) => {
-  const {text, isFinish} = todo;
+const TodoListItem = ({ todo, onCheck, onDelete }) => {
+  const {id, text, isFinish} = todo;
+  const onClick = useCallback(
+    e => {
+      onCheck(id, text, isFinish);
+    },
+    [id, text, isFinish, onCheck],
+  )
+
   return (
     <>
-      <li>
-        <span>
+      <li className={isFinish ? 'isFinish' : ''}>
+        <span onClick={onClick}>
           {isFinish ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
           <em className="text">{text}</em>
         </span>
-        <button type="button">삭제</button>
+        <button type="button" onClick={() =>onDelete(id)}>삭제</button>
       </li>
     </>
   );

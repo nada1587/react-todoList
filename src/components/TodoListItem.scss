@@ -23,6 +23,11 @@ li {
       font-size: 14px;
     }
   }
+  &.isFinish {
+    em {
+      text-decoration: line-through;
+    }
+  }
   > button {
     display: inline-block;
     padding: 2px 3px;

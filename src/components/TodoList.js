@@ -4,7 +4,7 @@ import { MdSentimentDissatisfied, MdSentimentSatisfied } from 'react-icons/md';
 import TodoListItem from './TodoListItem';
 import './TodoList.scss';
 
-const TodoList = ({ title, todos, onCheck, onDelete }) => {
+const TodoList = ({ title, todos }) => {
   return (
     <div className="todo-list-wrap">
       <h2>
@@ -14,7 +14,7 @@ const TodoList = ({ title, todos, onCheck, onDelete }) => {
         {
           todos.length >= 1 ? (
             todos.map((todo) => (
-              <TodoListItem todo={todo} key={todo.id} onCheck={onCheck} onDelete={onDelete} />
+              <TodoListItem todo={todo} key={todo.id} />
             ))
           ) : (
             <li>작성된 일정이 없습니다.</li>

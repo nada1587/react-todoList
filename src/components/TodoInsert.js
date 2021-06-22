@@ -1,28 +1,28 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { todoAdd } from '../actions'
 import { MdAdd } from 'react-icons/md';
 import './TodoInsert.scss';
 
-const TodoInsert = ({ onInsert }) => {
-  const [value, setValue] = useState('');
-
-  const onChange = useCallback(e => {
-    setValue(e.target.value);
+const TodoInsert = () => {
+  const [inputText, setInputText] = useState('');
+  const nextId = useRef(1);
+  const dispatch = useDispatch();
+  const onChange = useCallback((e) => {
+    setInputText(e.target.value)
   }, []);
-
-  const onSubmit = useCallback(
-    e => {
-      e.preventDefault();
-      onInsert(value);
-      setValue('');
-    },
-    [value, onInsert],
-  )
+  const onAddTodos = useCallback((e) => {
+    e.preventDefault();
+    dispatch(todoAdd(nextId.current, inputText));
+    nextId.current += 1;
+    setInputText('');
+  }, [dispatch, inputText]);
 
   return (
-    <form className="todo-input" onSubmit={onSubmit}>
+    <form className="todo-input" onSubmit={onAddTodos}>
       <input
         placeholder="할 일을 입력하세요."
-        value={value}
+        value={inputText}
         onChange={onChange}
       />
       <button type="submit">

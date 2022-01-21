@@ -1,5 +1,7 @@
 import { TODO_ADD, TODO_CHECK, TODO_DELETE } from "../actions"
 
+// Actions에 저장된 상태에 대한 약속된 작업을 처리하는 작업처리자 -> 상태관리
+
 // state
 const initialState = {
   todos: [],

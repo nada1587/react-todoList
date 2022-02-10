@@ -5,7 +5,8 @@ import {
   MdCheckBoxOutlineBlank,
   MdCheckBox,
 } from 'react-icons/md';
-import './TodoListItem.scss';
+import styled from "styled-components";
+import classNames from 'classnames';
 
 const TodoListItem = ({ todo }) => {
   const dispatch = useDispatch();
@@ -19,17 +20,62 @@ const TodoListItem = ({ todo }) => {
     dispatch(todoDelete(todo.id));
   }, [dispatch, todo.id]);
 
+  const isFinish = todo.isFinish;
+
   return (
     <>
-      <li className={todo.isFinish ? 'isFinish' : ''}>
+      <TodoItem className={classNames({isFinish})}>
         <span onClick={onTodoCheck}>
           {todo.isFinish ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
           <em className="text">{todo.text}</em>
         </span>
         <button type="button" onClick={onTodoDelete}>삭제</button>
-      </li>
+      </TodoItem>
     </>
   );
 };
+
+const TodoItem = styled.li`
+  display: flex;
+  color: #563d7c;
+  align-items: center;
+  vertical-align: middle;
+  > span {
+    flex: 1;
+    position: relative;
+    display: inline-block;
+    padding-left: 23px;
+    > svg {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      margin-top: -10px;
+      color: #563d7c;
+    }
+    > em {
+      display: inline-block;
+      margin-top: 1px;
+      font-size: 14px;
+    }
+  }
+  &.isFinish {
+    em {
+      text-decoration: line-through;
+    }
+  }
+  > button {
+    display: inline-block;
+    padding: 2px 3px;
+    border-radius: 4px;
+    background: #563d7c;
+    color: #fff;
+    font-size: 12px;
+  }
+  &+li {
+    padding-top: 10px;
+  }
+`;
 
 export default TodoListItem;

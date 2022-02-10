@@ -31,6 +31,3 @@ input[type="password"] {
 }
 *, *:before, *:after {-webkit-box-sizing:border-box;box-sizing:border-box}
 .uvc,legend{overflow:hidden;position:absolute;clip:rect(0 0 0 0);width:1px;height:1px;line-height:0;margin:-1px}
-
-.contents{height:100%;}
-.todo{display:flex;flex:1;height:100%;background:#f1f1f1;align-items:center;}

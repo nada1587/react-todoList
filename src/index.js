@@ -4,7 +4,7 @@ import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
 import logger from 'redux-logger'
 import rootReducer from "./reducers";
-import './index.css';
+// import './index.css';
 import App from './App';
 
 const store = createStore(

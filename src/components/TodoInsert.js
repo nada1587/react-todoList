@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { todoAdd } from '../actions'
 import { MdAdd } from 'react-icons/md';
-import './TodoInsert.scss';
+import styled from "styled-components";
 
 const TodoInsert = () => {
   const [inputText, setInputText] = useState('');
@@ -19,7 +19,7 @@ const TodoInsert = () => {
   }, [dispatch, inputText]);
 
   return (
-    <form className="todo-input" onSubmit={onAddTodos}>
+    <TodoInput onSubmit={onAddTodos}>
       <input
         placeholder="할 일을 입력하세요."
         value={inputText}
@@ -28,8 +28,31 @@ const TodoInsert = () => {
       <button type="submit">
         <MdAdd />
       </button>
-    </form>
+    </TodoInput>
   );
 };
+
+const TodoInput = styled.form`
+  display: flex;
+  > input {
+    flex: 1;
+    border: none;
+    background: none;
+    outline: none;
+    padding: 15px;
+    color: thistle;
+    &::placeholder {
+      color: thistle;
+    }
+  }
+  > button {
+    display: flex;
+    background: thistle;
+    color: #fff;
+    padding: 15px;
+    align-items: center;
+    cursor: pointer;
+  }
+`;
 
 export default TodoInsert;

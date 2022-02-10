@@ -25,15 +25,16 @@ const TodoInsert = () => {
         value={inputText}
         onChange={onChange}
       />
-      <button type="submit">
+      <FlatButton type="submit">
         <MdAdd />
-      </button>
+      </FlatButton>
     </TodoInput>
   );
 };
 
 const TodoInput = styled.form`
   display: flex;
+  border-top: 1px solid thistle;
   > input {
     flex: 1;
     border: none;
@@ -45,14 +46,17 @@ const TodoInput = styled.form`
       color: thistle;
     }
   }
-  > button {
-    display: flex;
-    background: thistle;
-    color: #fff;
-    padding: 15px;
-    align-items: center;
-    cursor: pointer;
-  }
+`;
+
+
+const FlatButton = styled.button`
+  display: flex;
+  background: thistle;
+  color: #fff;
+  padding: 15px;
+  border: none;
+  align-items: center;
+  cursor: pointer;
 `;
 
 export default TodoInsert;

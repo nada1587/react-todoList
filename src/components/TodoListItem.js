@@ -29,7 +29,7 @@ const TodoListItem = ({ todo }) => {
           {todo.isFinish ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
           <em className="text">{todo.text}</em>
         </span>
-        <button type="button" onClick={onTodoDelete}>삭제</button>
+        <SmallBtn type="button" onClick={onTodoDelete}>삭제</SmallBtn>
       </TodoItem>
     </>
   );
@@ -65,17 +65,19 @@ const TodoItem = styled.li`
       text-decoration: line-through;
     }
   }
-  > button {
-    display: inline-block;
-    padding: 2px 3px;
-    border-radius: 4px;
-    background: #563d7c;
-    color: #fff;
-    font-size: 12px;
-  }
   &+li {
     padding-top: 10px;
   }
+`;
+
+const SmallBtn = styled.button`
+  display: inline-block;
+  padding: 2px 3px;
+  border: none;
+  border-radius: 4px;
+  background: #563d7c;
+  color: #fff;
+  font-size: 12px;
 `;
 
 export default TodoListItem;

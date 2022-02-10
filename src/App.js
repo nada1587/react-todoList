@@ -24,6 +24,24 @@ const GlobalStyles = createGlobalStyle`
     -webkit-text-size-adjust: none;
     font-size: 14px;
   }
+
+  button {
+    outline: none;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
   .contents {
     height: 100%;
   }
